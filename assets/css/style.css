@@ -1,0 +1,222 @@
+body {
+  font-family: 'arial';
+}
+
+span {
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+}
+
+hr.new2 {
+  border-top: 1px dashed black;
+  width: 350px;
+  text-align: left;
+  align-items: left;
+}
+
+/* second id card  */
+p {
+  font-size: 13px;
+  margin-top: -5px;
+}
+
+.container {
+  width: 80vh;
+  height: 45vh;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 1px 10px rgb(146 161 176 / 50%);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.header {
+  width: 73vh;
+  height: 15vh;
+  margin: 20px auto;
+  background-color: white;
+  background-image: url(assets/images/BDM2.png);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header h1 {
+  color: rgb(27, 27, 49);
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.header p {
+  color: rgb(157, 51, 0);
+  text-align: right;
+  margin-right: 22px;
+  margin-top: -10px;
+}
+
+.container-2 {
+
+  width: 73vh;
+  height: 10vh;
+  margin: 0px auto;
+  margin-top: -20px;
+  display: flex;
+}
+
+.box-1 {
+  border: 4px solid black;
+  width: 90px;
+  height: 95px;
+  margin: -40px 25px;
+  border-radius: 3px;
+}
+
+.box-1 img {
+  width: 82px;
+  height: 87px;
+}
+
+.box-2 {
+  height: 8vh;
+  margin: 7px 0px;
+  padding: 5px 7px 0px 0px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+
+.box-2 h2 {
+  font-size: 1.3rem;
+  margin-top: -5px;
+  color: rgb(27, 27, 49);
+  ;
+}
+
+.box-2 p {
+  font-size: 0.7rem;
+  margin-top: -5px;
+  color: rgb(0, 105, 217);
+}
+
+.box-3 {
+
+  width: 8vh;
+  height: 8vh;
+  margin: 8px 0px 8px 30px;
+}
+
+.box-3 img {
+  width: 8vh;
+}
+
+.container-3 {
+
+  width: 73vh;
+  height: 12vh;
+  margin: 0px auto;
+  margin-top: 10px;
+  display: flex;
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 0.7rem;
+}
+
+.info-1 {
+
+  width: 17vh;
+  height: 12vh;
+}
+
+.id {
+
+  width: 17vh;
+  height: 5vh;
+}
+
+.id h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.dob {
+
+  width: 17vh;
+  height: 5vh;
+  margin: 8px 0px 0px 0px;
+}
+
+.dob h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.info-2 {
+
+  width: 17vh;
+  height: 12vh;
+}
+
+.join-date {
+
+  width: 17vh;
+  height: 5vh;
+}
+
+.join-date h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.expire-date {
+
+  width: 17vh;
+  height: 5vh;
+  margin: 8px 0px 0px 0px;
+}
+
+.expire-date h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.info-3 {
+
+  width: 17vh;
+  height: 12vh;
+}
+
+.email {
+
+  width: 22vh;
+  height: 5vh;
+}
+
+.email h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.phone {
+
+  width: 17vh;
+  height: 5vh;
+  margin: 8px 0px 0px 0px;
+}
+
+.info-4 {
+  width: 22vh;
+  height: 12vh;
+  margin: 0px 0px 0px 0px;
+  font-size: 15px;
+}
+
+.phone h4 {
+  color: rgb(0, 105, 217);
+  font-size: 15px;
+}
+
+.sign {
+  width: 17vh;
+  height: 5vh;
+  margin: 41px 0px 0px 20px;
+  text-align: center;
+}
