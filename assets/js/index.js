@@ -26,24 +26,6 @@ $(document).ready(function () {
   });
 });
 
-edits = document.getElementsByClassName('edit');
-Array.from(edits).forEach((element) => {
-  element.addEventListener("click", (e) => {
-    console.log("editar ");
-    tr = e.target.parentNode.parentNode;
-    name = tr.getElementsByTagName("td")[0].innerText;
-    id_no = tr.getElementsByTagName("td")[1].innerText;
-
-    console.log(name, id_no);
-    nameEdit.value = name;
-    id_noEdit.value = id_no;
-    snoEdit.value = e.target.id;
-
-    console.log(e.target.id)
-    $('#editModal').modal('toggle');
-  })
-})
-
 deletes = document.getElementsByClassName('delete');
 Array.from(deletes).forEach((element) => {
   element.addEventListener("click", (e) => {
@@ -60,3 +42,23 @@ Array.from(deletes).forEach((element) => {
     }
   })
 })
+
+edits = document.getElementsByClassName('edit');
+Array.from(edits).forEach((element) => {
+  element.addEventListener("click", (e) => {
+    console.log("editar");
+    tr = e.target.parentNode.parentNode;
+    name = tr.getElementsByTagName("td")[0].innerText;
+    id_no = tr.getElementsByTagName("td")[1].innerText;
+
+    console.log(name, id_no);
+    console.log(e.target.id)
+
+    nameEdit.value = name;
+    id_noEdit.value = id_no;
+    snoEdit.value = e.target.id;
+
+    $('#editModal').modal('toggle');
+  })
+})
+

@@ -36,7 +36,7 @@ p {
   height: 15vh;
   margin: 20px auto;
   background-color: white;
-  background-image: url(assets/images/BDM2.png);
+  background-image: url(../images/logo_header.png);
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
 }

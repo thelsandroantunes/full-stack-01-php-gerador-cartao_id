@@ -24,65 +24,63 @@ if (isset($_POST['search'])) {
             $office = $row['office'];
             $date = date('M d, Y', strtotime($row['date']));
 
-            $html .= "
-                                          
-                                          <!-- ===== Second Id Card Start ===== -->
-                                          <div class='container' style='text-align:left; border:2px dotted black;'>
-                                                <div class='header'>
-                                                  
-                                                </div>
-                                    
-                                                <div class='container-2'>
-                                                    <div class='box-1'>
-                                                    <img src='$image'/>
-                                                    </div>
-                                                    <div class='box-2'>
-                                                        <h2>$name</h2>
-                                                        <p style='font-size: 14px;'>$office</p>
-                                                    </div>
-                                                    <div class='box-3'>
-                                                        <img src='assets/images/logo_3.png' alt=''>
-                                                    </div>
-                                                </div>
-                                    
-                                                <div class='container-3'>
-                                                    <div class='info-1'>
-                                                        <div class='id'>
-                                                            <h4>Matrícula</h4>
-                                                            <p>$id_no</p>
-                                                        </div>
-                                    
-                                                        <div class='dob'>
-                                                            <h4>Telefone</h4>
-                                                            <p>$phone</p>
-                                                        </div>
-                                    
-                                                    </div>
-                                                    <div class='info-2'>
-                                                        <div class='join-date'>
-                                                            <h4>Entrada</h4>
-                                                            <p>$date</p>
-                                                        </div>
-                                                        <div class='expire-date'>
-                                                            <h4>Saída</h4>
-                                                            <p>$exp_date</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class='info-3'>
-                                                        <div class='email'>
-                                                            <h4>Endereço</h4>
-                                                            <p>$address Atualizado</p>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class='info-4'>
-                                                        <div class='sign'>
-                                                            <br>
-                                                            <p style='font-size:12px;'>Sua assinatura</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- ===== Second Id Card End ===== -->
-                                          ";
+            $html .= "                                          
+              <!-- ===== Second Id Card Start ===== -->
+              <div class='container' style='text-align:left; border:2px dotted black;'>
+                    <div class='header'>                      
+                    </div>
+
+                    <div class='container-2'>
+                        <div class='box-1'>
+                        <img src='$image'/>
+                        </div>
+                        <div class='box-2'>
+                            <h2>$name</h2>
+                            <p style='font-size: 14px;'>$office</p>
+                        </div>
+                        <div class='box-3'>
+                            <img src='assets/images/samsung-icon.png' alt=''>
+                        </div>
+                    </div>
+        
+                    <div class='container-3'>
+                        <div class='info-1'>
+                            <div class='id'>
+                                <h4>Matrícula</h4>
+                                <p>$id_no</p>
+                            </div>
+        
+                            <div class='dob'>
+                                <h4>Telefone</h4>
+                                <p>$phone</p>
+                            </div>
+        
+                        </div>
+                        <div class='info-2'>
+                            <div class='join-date'>
+                                <h4>Entrada</h4>
+                                <p>$date</p>
+                            </div>
+                            <div class='expire-date'>
+                                <h4>Saída</h4>
+                                <p>$exp_date</p>
+                            </div>
+                        </div>
+                        <div class='info-3'>
+                            <div class='email'>
+                                <h4>Endereço</h4>
+                                <p>$address Atualizado</p>
+                            </div>
+                            
+                        </div>
+                        <div class='info-4'>
+                            <div class='sign'>
+                                <br>
+                                <p style='font-size:12px;'>Sua assinatura</p>
+                            </div>
+                        </div>
+                        <!-- ===== Second Id Card End ===== -->
+              ";
         }
     }
 }
@@ -95,11 +93,7 @@ if (isset($_POST['search'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- ===== Bootstrap CSS Start ===== -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="images/favicon.png"/>
-  <link rel="stylesheet" href="css/dashboard.css">
-  
-  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  
   <!-- ===== Bootstrap CSS End ===== -->
   <title>Gerar Cartão</title>
   <!-- ===== Fonts CSS Start ===== -->
@@ -130,7 +124,7 @@ if (isset($_POST['search'])) {
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Lista
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Ação</a>
@@ -140,7 +134,7 @@ if (isset($_POST['search'])) {
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Desabilitar</a>
+          <a class="nav-link disabled" href="#">Desabilitado</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

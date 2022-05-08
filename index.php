@@ -9,6 +9,7 @@ $empty = false;
 $delete = false;
 $already_card = false;
 
+//Deletar registro
 if (isset($_GET['delete'])) {
     $sno = $_GET['delete'];
     $delete = true;
@@ -16,21 +17,26 @@ if (isset($_GET['delete'])) {
     $result = mysqli_query($conn, $sql);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['snoEdit'])) {
       // Atualizar o registro
-        $sno_up = $_POST["snoEdit"];
+        $sno_up = $_POST['snoEdit'];
         $name_up = $_POST["nameEdit"];
         $id_no_up = $_POST["id_noEdit"];
 
       // Consulta SQL a ser executada
-        $sql = "UPDATE `cards` SET `name`=$name_up,`id_no`=$id_no_up WHERE `sno`=$sno_up";
-        $result = mysqli_query($conn, $sql);
-        print ($result);
+        $result = mysqli_query($conn, "UPDATE cards SET name='$name_up',id_no='$id_no_up' WHERE sno='$sno_up'");
+
         if ($result) {
             $update = true;
         } else {
-            echo "Não foi possível atualizar o registro com sucesso";
+            echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>Aviso!</strong>
+                    Não foi possível atualizar o registro com sucesso. $id_no_up $name_up $sno_up => $result
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>×</span>
+                    </button>
+                  </div>";
         }
     } else {
         $name = $_POST["name"];
@@ -90,74 +96,77 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>ID CARTÃO</title>
 </head>
 <body>
-    <!-- ===== Edit Modal Start ===== -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Editar este Cartão</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <form method="post">
-                    <div class="modal-body">
-                        <input type="hidden" id="snoEdit" name="snoEdit">
-                        <div class="form-group">
-                            <label for="name">Nome do Funcionário</label>
-                            <input type="text" class="form-control" id="nameEdit" name="nameEdit">
-                        </div>
-                        <div class="form-group">
-                            <label for="desc"> Matrícula</label>
-                            <input class="form-control" id="id_noEdit" name="id_noEdit" rows="3"></ipnut>
-                        </div>
-                    </div>
-                    <div class="modal-footer d-block mr-auto">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
-                    </div>
-                </form>
-            </div>
+  <!-- ===== Edit Modal Start ===== -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Editar este Cartão</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+          </button>
         </div>
+        <!-- ===== Form Edit Start ===== -->
+        <form id="frm" method="POST">
+          <div class="modal-body">
+            <input type="hidden" id="snoEdit" name="snoEdit">
+            <div class="form-group">
+              <label for="name">Nome do Funcionário</label>
+              <input type="text" class="form-control" id="nameEdit" name="nameEdit">
+            </div>
+            <div class="form-group">
+              <label for="desc"> Matrícula</label>
+              <input class="form-control" id="id_noEdit" name="id_noEdit" rows="3">
+            </div>
+          </div>
+          <div class="modal-footer d-block mr-auto">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="document.forms['frm'].submit();" >Atualizar</button>
+          </div>
+        </form>
+        <!-- ===== Form Edit End ===== -->
+      </div>
     </div>
-    <!-- ===== Edit Modal End ===== -->
-    <!-- ===== Navigation Bar Start ===== -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a href="" class="navbar-brand"><img src="assets/images/logo_3.png" alt=""></a>
-        <button class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Ação</a>
-                <a class="dropdown-item" href="#">Nova ação</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Outra aqui</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Desabilitar</a>
-            </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Digite aqui..." aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>
-        </div>        
-    </nav>
-    <!-- ===== Navigation Bar End ===== -->
-    <?php
+  </div>
+  <!-- ===== Edit Modal End ===== -->
+  <!-- ===== Navigation Bar Start ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgb(0,300,255), rgb(93,4,217));">
+      <a href="" class="navbar-brand"><img src="assets/images/logo_3.png" alt=""></a>
+      <button class="navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Ação</a>
+              <a class="dropdown-item" href="#">Nova ação</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Outra aqui</a>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link disabled" href="#">Desabilitar</a>
+          </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Digite aqui..." aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
+          </form>
+      </div>        
+  </nav>
+  <!-- ===== Navigation Bar End ===== -->
+  <?php
+  /*log INSERT*/
     if ($insert) {
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Sucesso!</strong> Seu cartão foi inserido com sucesso
@@ -168,6 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
   <?php
+  /*log DELETE*/
     if ($delete) {
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Sucesso!</strong> Seu cartão foi excluído com sucesso
@@ -178,6 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
   <?php
+  /*log UPDATE*/
     if ($update) {
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Sucesso!</strong> Seu cartão foi atualizado com sucesso
@@ -187,7 +198,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>";
     }
     ?>
-   <?php
+  <?php
+  /*log EMPTY*/
     if ($empty) {
         echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
     <strong>Error!</strong> Os Campos Não Podem Estar Vazios! Por favor, dê alguns valores.
@@ -197,119 +209,123 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>";
     }
     ?>
-     <?php
-        if ($already_card) {
-            echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+  <?php
+  /*log ERROR ALREADY*/
+    if ($already_card) {
+        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
     <strong>Error!</strong> Este cartão já foi adicionado.
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
   </div>";
-        }
-        ?>
-    <div class="container my-4">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fa fa-plus"></i> Adicionar novo cartão
-        </button>
-        <a href="id_card.php" class="btn btn-primary">
-            <i class="fa fa-address-card"></i> Gerar cartão de identificação
-        </a>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-
-            <form method="POST" enctype="multipart/form-data">
-            <div class="form-row">
+    }
+    ?>
+  <div class="container my-4">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fa fa-plus"></i> Adicionar novo cartão
+    </button>
+    <a href="id_card.php" class="btn btn-info">
+        <i class="fa fa-address-card "></i> Gerar cartão de identificação
+    </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <!-- ===== Form Add Start ===== -->
+        <form method="POST" enctype="multipart/form-data">
+          <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">Nome do Funcionário</label>
                 <input type="text" name="name" class="form-control" id="inputCity">
             </div>
             <div class="form-group col-md-4">
-                <label for="inputState">Departamento</label>
-                <select id="department" name="department" class="form-control">
-                    <option selected>Escolher...</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="RH">RH</option>
-                    <option value="TI">TI</option>
-                    <option value="Suporte">Suporte</option>
-                    <option value="Produção">Produção</option>
-                    <option value="Diretoria">Diretoria</option>
-                    <option value="Segurança">Segurança</option>
-                </select>
+              <label for="inputState">Departamento</label>
+              <select id="department" name="department" class="form-control">
+                <option selected>Escolher...</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="RH">RH</option>
+                <option value="TI">TI</option>
+                <option value="Suporte">Suporte</option>
+                <option value="Produção">Produção</option>
+                <option value="Diretoria">Diretoria</option>
+                <option value="Segurança">Segurança</option>
+              </select>
             </div>
             <div class="form-group col-md-2">
-                <label for="inputZip">Aniversário</label>
-                <input type="date" name="dob" class="form-control">
+              <label for="inputZip">Aniversário</label>
+              <input type="date" name="dob" class="form-control">
             </div>
-        </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">Endereço</label>
-        <input type="text" name="address" class="form-control">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">Email</label>
-        <input type="text" name="email" class="form-control">
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Data de Entrada</label>
-        <input type="date" name="exp_date" class="form-control">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Endereço</label>
+              <input type="text" name="address" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">Email</label>
+              <input type="text" name="email" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Data de Entrada</label>
+              <input type="date" name="exp_date" class="form-control">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="id_no">Matrícula</label>
+              <input class="form-control" id="id_no" name="id_no" ></input>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="office">Cargo</label>
+              <input type="text" name="office" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="phone">Telefone</label>
+              <input class="form-control" id="phone" name="phone" ></input>
+            </div>        
+            <div class="form-group col-md-3">
+              <label for="photo">Foto</label>
+              <input type="file" name="image" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar Cartão</button>
+        </form>
+        <!-- ===== Form Add End ===== -->
       </div>
     </div>
-      
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="id_no">Matrícula</label>
-          <input class="form-control" id="id_no" name="id_no" ></input>
-        </div>
-        <div class="form-group col-md-3">
-            <label for="office">Cargo</label>
-            <input type="text" name="office" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="phone">Telefone</label>
-          <input class="form-control" id="phone" name="phone" ></input>
-        </div>        
-        <div class="form-group col-md-3">
-          <label for="photo">Foto</label>
-          <input type="file" name="image" />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar Cartão</button>
-    </form>
-  </div>
-</div>
-<div class="container my-4">
-    <table class="table" id="myTable">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Matrícula</th>
-          <th scope="col">Cargo</th>
-          <th scope="col">Departamento</th>
-          <th scope="col">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-          $sql = "SELECT * FROM `cards` order by 1 DESC";
-          $result = mysqli_query($conn, $sql);
-          $sno = 0;
-        while ($row = mysqli_fetch_assoc($result)) {
-            $sno = $sno + 1;
-            echo "<tr>
-            <th scope='row'>" . $sno . "</th>
-            <td>" . $row['name'] . "</td>
-            <td>" . $row['id_no'] . "</td>
-            <td>" . $row['office'] . "</td>
-            <td>" . $row['department'] . "</td>
-            <td> <button class='edit btn btn-sm btn-primary' id=" . $row['sno'] . ">Editar</button> <button class='delete btn btn-sm btn-primary' id=d" . $row['sno'] . ">Deletar</button>  </td>
-          </tr>";
-        }
-        ?>
-      </tbody>
-    </table>
+    <div class="container my-4">
+      <!-- ===== View Table Start ===== -->
+      <table class="table" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Matrícula</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            $sql = "SELECT * FROM `cards` order by 1 DESC";
+            $result = mysqli_query($conn, $sql);
+            $sno = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $sno = $sno + 1;
+                echo "<tr>
+              <th scope='row'>" . $sno . "</th>
+              <td>" . $row['name'] . "</td>
+              <td>" . $row['id_no'] . "</td>
+              <td>" . $row['office'] . "</td>
+              <td>" . $row['department'] . "</td>
+              <td> <button class='edit btn btn-sm btn-primary' id=" . $row['sno'] . ">Editar</button> <button class='delete btn btn-sm btn-danger' id=d" . $row['sno'] . ">Deletar</button>  </td>
+            </tr>";
+            }
+            ?>
+        </tbody>
+      </table>
+      <!-- ===== View Table End ===== -->
+    </div>
   </div>
   <hr>
   
@@ -326,5 +342,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   <script src="assets/js/index.js"></script>
   <!-- ===== JS End ===== -->
+  
 </body>
 </html>
