@@ -8,8 +8,8 @@
 
 <a><img height="200" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/01_home.JPG" alt="img-mob-1"></a>
 <a><img height="200" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/02_add.JPG" alt="img-mob-2"></a>
-<a><img height="220" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/03_update.JPG" alt="img-mob-3"></a>
-<a><img height="230" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/04_card.JPG" alt="img-mob-4"></a>
+<a><img height="210" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/03_update.JPG" alt="img-mob-3"></a>
+<a><img height="220" src="https://github.com/thelsandroantunes/full-stack-01-php-gerador-cartao_id/blob/main/assets/images/screens/04_card.JPG" alt="img-mob-4"></a>
 
 
 > Se você quiser dar uma olhada em todas as telas em vídeo demo, elas estão [aqui](https://www.youtube.com/watch?v=iZYylpqDbuI).
